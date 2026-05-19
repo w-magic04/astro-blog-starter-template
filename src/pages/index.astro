@@ -1,50 +1,274 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+// كود البناء لصفحة الهبوط - عيد الميلاد 2026
+const pageTitle = "Christmas Gift Giveaway!";
 ---
 
-<!doctype html>
 <html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header />
-		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
-				template serves as a lightweight, minimally-styled starting point for anyone looking to build
-				a personal website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to <a href="https://docs.astro.build/"
-					>read the docs
-				</a> or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out <a
-					href="https://github.com/Charca/astro-blog-template"
-					>astro-blog-template
-				</a> by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
-		</main>
-		<Footer />
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{pageTitle}</title>
+    
+    <!-- خط احترافي ومناسب لأجواء عيد الميلاد -->
+    <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+      /* التنسيقات الأساسية والخلفية الليلية */
+      body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(to bottom, #020813 0%, #071426 40%, #0d2038 100%);
+        color: #ffffff;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow-x: hidden;
+        position: relative;
+      }
+
+      /* تأثير الأضواء والنجوم المتلألئة في الخلفية */
+      .stars {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
+                    radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px),
+                    radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px);
+        background-size: 550px 550px, 350px 350px, 250px 250px;
+        background-position: 0 0, 40px 60px, 130px 270px;
+        animation: twins 4s linear infinite;
+        opacity: 0.6;
+        z-index: 1;
+      }
+
+      @keyframes twins {
+        0% { opacity: 0.6; }
+        50% { opacity: 0.3; }
+        100% { opacity: 0.6; }
+      }
+
+      /* القمر في أعلى اليسار */
+      .moon {
+        position: absolute;
+        top: 40px;
+        left: 40px;
+        width: 100px;
+        height: 100px;
+        background: #fefcd7;
+        border-radius: 50%;
+        box-shadow: 0 0 40px 10px rgba(254, 252, 215, 0.4);
+        z-index: 2;
+      }
+
+      /* أشجار الكريسماس في الأسفل كظلال خفيفة */
+      .trees-bg {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 150px;
+        background-image: url('https://cdn-icons-png.flaticon.com/512/488/488052.png');
+        background-repeat: repeat-x;
+        background-size: 80px;
+        opacity: 0.15;
+        z-index: 2;
+        pointer-events: none;
+      }
+
+      /* الحاوية الرئيسية وسط الصفحة */
+      .container {
+        position: relative;
+        z-index: 3;
+        text-align: center;
+        max-width: 600px;
+        width: 90%;
+        padding: 30px;
+        background: rgba(255, 255, 255, 0.03);
+        backdrop-filter: blur(8px);
+        border-radius: 24px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+      }
+
+      /* صورة سانتا كلوز في المنتصف */
+      .santa-img {
+        width: 180px;
+        height: auto;
+        margin-bottom: 20px;
+        filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
+        animation: float 3s ease-in-out infinite;
+      }
+
+      @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+        100% { transform: translateY(0px); }
+      }
+
+      /* الزر الذهبي الناصع المضيء */
+      .gold-btn {
+        background: linear-gradient(135deg, #ffe066 0%, #f5b041 50%, #d4ac0d 100%);
+        color: #1a0f00;
+        font-family: 'Poppins', sans-serif;
+        font-size: 1.6rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        padding: 16px 45px;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        box-shadow: 0 0 25px #f5b041, inset 0 2px 4px rgba(255,255,255,0.6);
+        transition: all 0.3s ease;
+        margin-top: 10px;
+        margin-bottom: 30px;
+        display: inline-block;
+      }
+
+      .gold-btn:hover {
+        transform: scale(1.06);
+        box-shadow: 0 0 35px #ffe066;
+        background: linear-gradient(135deg, #fff 0%, #f5b041 50%, #ffe066 100%);
+      }
+
+      /* العداد التنازلي */
+      .countdown-container {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-bottom: 25px;
+      }
+
+      .time-box {
+        background: rgba(255, 255, 255, 0.08);
+        padding: 12px 18px;
+        border-radius: 12px;
+        min-width: 65px;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .time-num {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #e74c3c;
+        display: block;
+        line-height: 1;
+        text-shadow: 0 0 10px rgba(231, 76, 60, 0.5);
+      }
+
+      .time-label {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        color: #bdc3c7;
+        margin-top: 5px;
+        display: block;
+      }
+
+      /* النص الإنجليزي في الأسفل */
+      .promo-text {
+        font-size: 1.1rem;
+        color: #f1f2f6;
+        line-height: 1.5;
+        margin: 0;
+        font-weight: 400;
+      }
+      
+      .promo-text span {
+        color: #ffe066;
+        font-weight: 600;
+      }
+    </style>
+
+    <!-- ⚠️ ضع هنا كود الجافاسكريبت الخاص بقفل المحتوى (Content Locker Script) من شركة الـ CPA مستقبلاً -->
+    <script is:inline>
+      function openCpaLocker() {
+        // إذا كان لديك كود قفل، فقم باستدعاء الدالة الخاصة به هنا.
+        // مثال لطلب العرض:
+        // if (typeof call_locker === 'function') { call_locker(); } else { alert("Locker coming soon!"); }
+        
+        alert("Please complete one of the verification steps to unlock and claim your Christmas gift instantly!");
+      }
+    </script>
+  </head>
+  
+  <body>
+    <!-- عناصر الخلفية -->
+    <div class="stars"></div>
+    <div class="moon"></div>
+    <div class="trees-bg"></div>
+
+    <!-- محتوى صفحة الهبوط -->
+    <div class="container">
+      
+      <!-- صورة سانتا كلوز (رابط مباشر لصورة متحركة عالية الجودة) -->
+      <img src="https://img.picmix.com/stamp/normal/4/0/1/6/1576104_b1429.gif" alt="Santa Claus" class="santa-img" />
+      
+      <div>
+        <!-- الزر الذهبي -->
+        <button class="gold-btn" onclick="openCpaLocker()">Get Your Gift</button>
+      </div>
+
+      <!-- العداد التنازلي -->
+      <div class="countdown-container">
+        <div class="time-box">
+          <span class="time-num" id="days">00</span>
+          <span class="time-label">Days</span>
+        </div>
+        <div class="time-box">
+          <span class="time-num" id="hours">00</span>
+          <span class="time-label">Hours</span>
+        </div>
+        <div class="time-box">
+          <span class="time-num" id="minutes">00</span>
+          <span class="time-label">Mins</span>
+        </div>
+        <div class="time-box">
+          <span class="time-num" id="seconds">00</span>
+          <span class="time-label">Secs</span>
+        </div>
+      </div>
+
+      <!-- الجملة التسويقية بالإنجليزية بالأسفل -->
+      <p class="promo-text">
+        Remaining until Christmas! <span>Register now</span> to claim your exclusive holiday gift.
+      </p>
+
+    </div>
+
+    <!-- كود تشغيل العداد التنازلي تلقائياً ليعمل دائماً على تاريخ الكريسماس القادم -->
+    <script is:inline>
+      function updateCountdown() {
+        const currentYear = new Date().getFullYear();
+        let christmasTime = new Date(`December 25, ${currentYear} 00:00:00`).getTime();
+        const now = new Date().getTime();
+        
+        // إذا مر تاريخ الكريسماس لهذا العام، يحسب تلقائياً للعام القادم
+        if (now > christmasTime) {
+          christmasTime = new Date(`December 25, ${currentYear + 1} 00:00:00`).getTime();
+        }
+
+        const diff = christmasTime - now;
+
+        const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+        document.getElementById('days').innerText = d < 10 ? '0' + d : d;
+        document.getElementById('hours').innerText = h < 10 ? '0' + h : h;
+        document.getElementById('minutes').innerText = m < 10 ? '0' + m : m;
+        document.getElementById('seconds').innerText = s < 10 ? '0' + s : s;
+      }
+
+      // تحديث العداد كل ثانية
+      setInterval(updateCountdown, 1000);
+      updateCountdown();
+    </script>
+  </body>
 </html>
