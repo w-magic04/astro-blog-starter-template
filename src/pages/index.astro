@@ -10,8 +10,7 @@ const pageTitle = "Christmas Gift Giveaway!";
     <meta name="viewport" content="width=device-width" />
     <title>{pageTitle}</title>
     
-    <!-- خط احترافي ومناسب لأجواء عيد الميلاد -->
-    <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght=700&family=Poppins:wght=400;600;700&display=swap" rel="stylesheet">
 
     <style>
       /* التنسيقات الأساسية والخلفية الليلية */
@@ -96,19 +95,43 @@ const pageTitle = "Christmas Gift Giveaway!";
         box-shadow: 0 20px 50px rgba(0,0,0,0.5);
       }
 
-      /* صورة سانتا كلوز في المنتصف */
-      .santa-img {
-        width: 180px;
-        height: auto;
-        margin-bottom: 20px;
-        filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
+      /* حاوية بطاقات الهدايا المتجاورة مع تأثير الحركة العائمة */
+      .gift-cards-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        margin-bottom: 25px;
         animation: float 3s ease-in-out infinite;
+      }
+
+      /* تصميم وتجاوب صور بطاقات الهدايا */
+      .gift-card-img {
+        width: 160px;
+        height: auto;
+        border-radius: 8px;
+        filter: drop-shadow(0 12px 24px rgba(0,0,0,0.5));
+        transition: transform 0.3s ease;
+      }
+
+      .gift-card-img:hover {
+        transform: scale(1.08) rotate(2deg);
       }
 
       @keyframes float {
         0% { transform: translateY(0px); }
-        50% { transform: translateY(-10px); }
+        50% { transform: translateY(-12px); }
         100% { transform: translateY(0px); }
+      }
+
+      /* تنسيق إضافي للهواتف لضمان عدم تداخل البطاقات */
+      @media (max-width: 480px) {
+        .gift-cards-container {
+          gap: 10px;
+        }
+        .gift-card-img {
+          width: 130px;
+        }
       }
 
       /* الزر الذهبي الناصع المضيء */
@@ -170,7 +193,7 @@ const pageTitle = "Christmas Gift Giveaway!";
         display: block;
       }
 
-      /* النص الإنجليزي في الأسفل */
+      /* النص الإنجليزي في الأسفل بعد تعديله ليناسب العرض الجديد */
       .promo-text {
         font-size: 1.1rem;
         color: #f1f2f6;
@@ -185,36 +208,33 @@ const pageTitle = "Christmas Gift Giveaway!";
       }
     </style>
 
-    <!-- ⚠️ ضع هنا كود الجافاسكريبت الخاص بقفل المحتوى (Content Locker Script) من شركة الـ CPA مستقبلاً -->
     <script is:inline>
       function openCpaLocker() {
         // إذا كان لديك كود قفل، فقم باستدعاء الدالة الخاصة به هنا.
         // مثال لطلب العرض:
         // if (typeof call_locker === 'function') { call_locker(); } else { alert("Locker coming soon!"); }
         
-        alert("Please complete one of the verification steps to unlock and claim your Christmas gift instantly!");
+        alert("Please complete one of the verification steps to unlock and claim your $50 Gift Card instantly!");
       }
     </script>
   </head>
   
   <body>
-    <!-- عناصر الخلفية -->
     <div class="stars"></div>
     <div class="moon"></div>
     <div class="trees-bg"></div>
 
-    <!-- محتوى صفحة الهبوط -->
     <div class="container">
       
-      <!-- صورة سانتا كلوز (رابط مباشر لصورة متحركة عالية الجودة) -->
-      <img src="https://img.picmix.com/stamp/normal/4/0/1/6/1576104_b1429.gif" alt="Santa Claus" class="santa-img" />
+      <div class="gift-cards-container">
+        <img src="https://i.ibb.co/hR0gDPr/amazon-50.png" alt="Amazon $50 Gift Card" class="gift-card-img" />
+        <img src="https://i.ibb.co/0VpYfL6/mastercard-50.png" alt="Mastercard $50 Gift Card" class="gift-card-img" />
+      </div>
       
       <div>
-        <!-- الزر الذهبي -->
         <button class="gold-btn" onclick="openCpaLocker()">Get Your Gift</button>
       </div>
 
-      <!-- العداد التنازلي -->
       <div class="countdown-container">
         <div class="time-box">
           <span class="time-num" id="days">00</span>
@@ -234,14 +254,12 @@ const pageTitle = "Christmas Gift Giveaway!";
         </div>
       </div>
 
-      <!-- الجملة التسويقية بالإنجليزية بالأسفل -->
       <p class="promo-text">
-        Remaining until Christmas! <span>Register now</span> to claim your exclusive holiday gift.
+        Remaining until Christmas! <span>Register now</span> to claim your $50 exclusive holiday gift card.
       </p>
 
     </div>
 
-    <!-- كود تشغيل العداد التنازلي تلقائياً ليعمل دائماً على تاريخ الكريسماس القادم -->
     <script is:inline>
       function updateCountdown() {
         const currentYear = new Date().getFullYear();
